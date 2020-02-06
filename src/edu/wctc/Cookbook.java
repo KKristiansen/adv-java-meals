@@ -107,7 +107,7 @@ public class Cookbook {
     }
 
     private void printTotals(ArrayList<Integer> nums) {
-        int total = 0, min = -1, max = 0, median;
+        int total = 0, min = -1, max = 0, median, temp;
         double mean;
         for (int val : nums) {
             if (min == -1) min = val; //dummy to set first value
@@ -116,7 +116,16 @@ public class Cookbook {
             total = total + val;
         }
         mean = (double)total / nums.size();
-        //Sort Nums here
+        //Sort Nums
+        for (int i = 0; i < nums.size() ;i++) {
+            for (int c = i+1; c < nums.size(); c++) {
+                if (nums.get(i) > nums.get(c)) {
+                    temp = nums.get(i);
+                    nums.set(i,nums.get(c));
+                    nums.set(c, temp);
+                }
+            }
+        }
         median = nums.get(nums.size()/2);
         System.out.printf("%5d%11.4f%7d%8d%11d\n", total, mean, min, max, median);
     }
