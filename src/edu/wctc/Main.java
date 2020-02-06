@@ -1,5 +1,6 @@
 package edu.wctc;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -20,6 +21,8 @@ public class Main {
             String[] fields = line.split(",");
             cookbook.addElementWithStrings(fields[0], fields[1], fields[2]);
         }
+
+        indata.fileClose();
 
         runMenu();
     }
@@ -57,7 +60,8 @@ public class Main {
                     searchByName();
                     break;
                 case "4":
-                    // doControlBreak();
+                    //doControlBreak();
+                    cookbook.printByControlBreak();
                     break;
                 case "5":
                     userContinue = false;
